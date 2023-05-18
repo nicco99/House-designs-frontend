@@ -6,16 +6,26 @@ import Link from "next/link"
 import { Chip, Button } from '@mui/material';
 export default function Index() {
   return (
-    <Container maxWidth="sm" >
+    <Container maxWidth="xl" >
       <Box sx={{ my: 4, }}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Material UI - Next.js example
+        <Typography variant="h1" component="h1" gutterBottom>
+          h1
+        </Typography>
+        <Typography variant="subtitle1" gutterBottom>
+          subtitle1
+        </Typography>
+        <Typography variant="subtitle2" component="h1" gutterBottom>
+          subtitle2
+        </Typography>
+        <Typography variant="body1" component="h1" gutterBottom>
+          bady1
+        </Typography>
+        <Typography variant="body2" component="h1" gutterBottom>
+          body2
         </Typography>
         <Link href="/about" color="secondary">
           Go to the about page
         </Link>
-       <Chip label="hello mui" />
-      s
       </Box>
       <Typography variant="subtitle1">primary</Typography>
       <Button sx={{backgroundColor: "primary.main", color: "#ffff"}}>main</Button>
