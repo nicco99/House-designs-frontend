@@ -1,21 +1,27 @@
 import * as React from "react";
-import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import Box from "@mui/material/Box";
 import Link from "next/link";
 import { Chip, Button, Stack } from "@mui/material";
 import Header from "@/components/surfaces/Header";
-import Carousel from "react-material-ui-carousel";
+import { TypeAnimation } from "react-type-animation";
 import { Paper } from "@mui/material";
 import c1 from "../public/c1.jpeg";
-import c2 from "../public/c2.jpeg";
-
+import c3 from "../public/c3.png";
+import landing from "../public/landing.jpg"
+import Footer from "../components/surfaces/Footer"
 function Item(props: any) {
   return (
-    <Paper sx={{height: "100vh"}}>
+    <Paper sx={{ height: "100vh" }}>
       <h2>{props.item.name}</h2>
-      <Image height={400} width={500} style={{minHeight: "100px"}} src={props.item.image} alt="design" />
+      <Image
+        height={400}
+        width={500}
+        style={{ minHeight: "100px" }}
+        src={props.item.image}
+        alt="design"
+      />
       <p>{props.item.description}</p>
     </Paper>
   );
@@ -29,29 +35,81 @@ export default function Index() {
       description: "Probably the most random thing you have ever seen!",
     },
     {
-      image: c2,
+      image: c3,
       name: "3 Bedrooms",
       description: "Hello World!",
     },
   ];
   return (
-    <Container maxWidth="xl">
+    <Stack
+      sx={{
+        width: "100%",
+        height: "100%",
+        backgroundColor: "secondary.light",
+      }}>
       <Header />
       <Stack
         sx={{
+          width: "100%",
+          backgroundImage: `url(${landing.src})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          marginTop: "30px",
           display: "grid",
-          zIndex: -1,
-          marginTop: "70px",
-          gridTemplateColumns: "auto auto",
-          height: "80vh",
+          gridTemplateColumns: "1fr 1fr",
+          "@media (max-width: 600px)" : {
+            display: "grid",
+            gridTemplateColumns: "1fr",
+          },
+          height: "100vh",
         }}>
-        <Stack>words</Stack>
-        <Stack sx={{ height: "70%", zIndex: -1 }}>
-          <Carousel>
-            {items.map((item, i) => (
-              <Item key={i} item={item} />
-            ))}
-          </Carousel>
+        <Stack
+          direction="column"
+          sx={{
+            // zIndex: "2",
+            height: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 5,
+          }}>
+          <Typography
+            sx={{ fontWeight: "800" }}
+            color="secondary.light"
+            variant="h1">
+          <TypeAnimation
+            sequence={[
+              "We Build Quality DESIGNS", // Types 'One'
+              1000, // Waits 1s
+              "We Design Appartments",
+              1000, // Waits 2s
+              "We Design Bungalos",
+              1000,
+              "We Design Massionate",
+              1000,
+              //'Two Three', // Types 'Three' without deleting 'Two'
+            ]}
+            wrapper="span"
+            cursor={true}
+            repeat={Infinity}
+            
+          />
+          </Typography>
+          <Typography
+            sx={{ width: "70%", lineHeight: "30px", fontWeight: "800" }}
+            color="secondary.light"
+            variant="body2">
+            At our core, we deliver good designs by combining creativity,
+            research, collaboration, and attention to detail, resulting in
+            visually appealing and functional solutions that exceed
+            expectations.
+          </Typography>
+          <Button size="large" variant="contained">
+            Browse Designs
+          </Button>
+        </Stack>
+        <Stack sx={{display: "flex", justifyContent: 'center',alignItems: "center" }}>
+          <Paper sx={{backgroundColor: "secondary.light",width: "60%", height: "20%"}}></Paper>
         </Stack>
       </Stack>
       <Box sx={{ my: 4 }}>
@@ -95,6 +153,7 @@ export default function Index() {
       <Button sx={{ backgroundColor: "secondary.light", color: "red" }}>
         light
       </Button>
-    </Container>
+      <Footer />
+    </Stack>
   );
 }
