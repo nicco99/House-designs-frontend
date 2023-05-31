@@ -182,12 +182,6 @@ export default function Index() {
                 display: "grid",
                 gridTemplateColumns: "1fr",
               },
-
-              "@media (max-width: 701px)": {
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: 1,
-              },
             }}>
             <Box sx={{ width: "100%" }}>
               <Typography
@@ -270,20 +264,17 @@ export default function Index() {
           <Box
             sx={{
               display: "grid",
-              gridTemplateColumns: "auto auto auto",
+              gridTemplateColumns: "1fr 1fr",
               width: "90%",
               alignSelf: "center",
+              height: "100%",
               gap: 3,
-              "@media (max-width: 600px)": {
+              "@media (max-width: 800px)": {
                 display: "grid",
-                gridTemplateColumns: "auto",
+                gridTemplateColumns: "1fr",
               },
 
-              "@media (min-width: 601px)": {
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: 1,
-              },
+             
             }}>
             {items.map((item) => (
               <ReusableCard key={item.name} {...item} />
