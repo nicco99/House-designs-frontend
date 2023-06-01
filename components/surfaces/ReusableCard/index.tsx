@@ -50,7 +50,7 @@ const ReusableCard: React.FC<{
             sx={{
               display: "grid",
               gridTemplateColumns: "1fr",
-              gap: 3,
+              gap: 1,
               "@media(max-width: 600px": {
                 gap: 1,
               },
