@@ -15,15 +15,20 @@ const ReusableCard: React.FC<{
     <Paper
       sx={{
         backgroundColor: "#f5f5f5",
-
         height: "100%",
+        position: "relative",
+        flexGrow: 1,
         borderRadius: "10px",
-        boxShadow: "2px 10px 6px -6px hsl(100, 35%, 28%)",
+        boxShadow: "0px 10px 6px -6px hsl(100, 35%, 28%)",
       }}>
       <Image
         alt={image}
         src={image}
-        style={{ height: "50%", width: "100%", borderRadius: "10px" }}
+        style={{
+          height: "50%",
+          width: "100%",
+          borderRadius: "10px",
+        }}
       />
       <Box
         sx={{
@@ -32,7 +37,7 @@ const ReusableCard: React.FC<{
           padding: "10px",
           height: "50%",
           marginLeft: "10px",
-          gap: 2,
+          gap: 1,
         }}>
         <Typography variant="body1">
           Build cost{" "}
@@ -40,8 +45,16 @@ const ReusableCard: React.FC<{
             Ksh {"123,000"}
           </Typography>
         </Typography>
-        <Box sx={{ height: "75%" }}>
-          <Box sx={{ display: "grid", gridTemplateColumns: "1fr", gap: 3 }}>
+        <Box>
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              gap: 3,
+              "@media(max-width: 600px": {
+                gap: 1,
+              },
+            }}>
             <Typography variant="subtitle1">{name}</Typography>
             <Stack
               sx={{
@@ -60,18 +73,22 @@ const ReusableCard: React.FC<{
             </Stack>
           </Box>
         </Box>
-        <Divider />
-        <Box
-          sx={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            paddingBottom: "10px",
-          }}>
-          <Button variant="text">
-            Save plan <BookmarkIcon />
-          </Button>
-          <Button variant="outlined">{"More details>>"}</Button>
-        </Box>
+      </Box>
+
+      <Box
+        sx={{
+          width: "90%",
+          display: "grid",
+          position: "absolute",
+          bottom: 4,
+          marginLeft: "auto",
+          marginRight: "auto",
+          gridTemplateColumns: "1fr 1fr",
+        }}>
+        <Button variant="text">
+          Save plan <BookmarkIcon />
+        </Button>
+        <Button variant="outlined">{"More>>"}</Button>
       </Box>
     </Paper>
   );

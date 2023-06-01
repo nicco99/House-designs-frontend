@@ -265,6 +265,7 @@ export default function Index() {
             sx={{
               display: "grid",
               gridTemplateColumns: "1fr 1fr",
+              gridRowGap: "10px",
               width: "90%",
               alignSelf: "center",
               height: "100%",
@@ -273,8 +274,6 @@ export default function Index() {
                 display: "grid",
                 gridTemplateColumns: "1fr",
               },
-
-             
             }}>
             {items.map((item) => (
               <ReusableCard key={item.name} {...item} />
