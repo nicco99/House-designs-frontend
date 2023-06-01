@@ -55,21 +55,25 @@ const ReusableCard: React.FC<{
                 gap: 1,
               },
             }}>
-            <Typography variant="subtitle1">{name}</Typography>
-            <Stack
-              sx={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr 1fr",
-                width: "90%",
-                alignSelf: "center",
-              }}>
-              <Box sx={{ display: "flex", gap: 1 }}>
-                <LocalHotelIcon />{" "}
-                <Typography variant="subtitle2">3</Typography>
-              </Box>
-              <Box sx={{ display: "flex", gap: 1 }}>
-                <BathtubIcon /> <Typography variant="subtitle2">2</Typography>
-              </Box>
+            <Stack sx={{ display: "grid", gridTemplateColumns: "1fr",gap:1 }}>
+              <Typography component="span" variant="subtitle1">
+                {name}
+              </Typography>
+              <Stack
+                sx={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr",
+                  width: "90%",
+                  alignSelf: "center",
+                }}>
+                <Box sx={{ display: "flex", gap: 1 }}>
+                  <LocalHotelIcon />{" "}
+                  <Typography variant="subtitle2">3</Typography>
+                </Box>
+                <Box sx={{ display: "flex", gap: 1 }}>
+                  <BathtubIcon /> <Typography variant="subtitle2">2</Typography>
+                </Box>
+              </Stack>
             </Stack>
           </Box>
         </Box>
