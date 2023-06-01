@@ -17,15 +17,15 @@ const ReusableCard: React.FC<{
         backgroundColor: "#f5f5f5",
         height: "100%",
         position: "relative",
-        flexGrow: 1,
         borderRadius: "10px",
         boxShadow: "0px 10px 6px -6px hsl(100, 35%, 28%)",
+        gap: 1,
       }}>
       <Image
         alt={image}
         src={image}
         style={{
-          height: "50%",
+          height: "45%",
           width: "100%",
           borderRadius: "10px",
         }}
@@ -35,53 +35,58 @@ const ReusableCard: React.FC<{
           display: "flex",
           flexDirection: "column",
           padding: "10px",
-          height: "50%",
+
           marginLeft: "10px",
           gap: 1,
         }}>
-        <Typography variant="body1">
-          Build cost{" "}
-          <Typography variant="subtitle2" component="span">
-            Ksh {"123,000"}
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            width: "90%",
+          }}>
+          <Typography variant="body1">
+            Build cost{" "}
+            <Typography variant="subtitle2" component="span">
+              Ksh {"123,000"}
+            </Typography>
           </Typography>
-        </Typography>
-        <Box>
-          <Box
+          <Stack
             sx={{
+              gap: 3,
               display: "grid",
-              gridTemplateColumns: "1fr",
-              gap: 1,
-              "@media(max-width: 600px": {
-                gap: 1,
-              },
+              gridTemplateColumns: "1fr 1fr",
             }}>
-            <Stack sx={{ display: "grid", gridTemplateColumns: "1fr",gap:1 }}>
-              <Typography component="span" variant="subtitle1">
-                {name}
-              </Typography>
-              <Stack
-                sx={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  width: "90%",
-                  alignSelf: "center",
-                }}>
-                <Box sx={{ display: "flex", gap: 1 }}>
-                  <LocalHotelIcon />{" "}
-                  <Typography variant="subtitle2">3</Typography>
-                </Box>
-                <Box sx={{ display: "flex", gap: 1 }}>
-                  <BathtubIcon /> <Typography variant="subtitle2">2</Typography>
-                </Box>
-              </Stack>
-            </Stack>
-          </Box>
+            <Box sx={{ display: "flex", gap: 1 }}>
+              <LocalHotelIcon /> <Typography variant="subtitle2">3</Typography>
+            </Box>
+            <Box sx={{ display: "flex", gap: 1 }}>
+              <BathtubIcon /> <Typography variant="subtitle2">2</Typography>
+            </Box>
+          </Stack>
+        </Box>
+
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: "1fr",
+            gap: 1,
+            "@media(max-width: 600px": {
+              gap: 1,
+            },
+          }}>
+          <Stack sx={{ display: "grid", gridTemplateColumns: "1fr", gap: 1 }}>
+            <Typography component="span" variant="subtitle1">
+              {name}
+            </Typography>
+          </Stack>
         </Box>
       </Box>
 
       <Box
         sx={{
           width: "90%",
+
           display: "grid",
           position: "absolute",
           bottom: 4,
