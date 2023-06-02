@@ -73,11 +73,13 @@ const Main = () => {
     <Stack
       sx={{
         gap: 2,
+        display: "flex",
+        flexDirection: "column",
       }}>
       <Box
         sx={{
           width: "100%",
-          marginBottom: "10px",
+
           backgroundColor: "secondary.light",
           gap: "5px",
           display: "flex",
@@ -113,16 +115,14 @@ const Main = () => {
         container
         spacing={2}
         sx={{
-          
+          alignSelf: "center",
           "@media(min-width: 600px)": {
             width: "90%",
-            marginRight: "auto",
-            marginLeft: "auto",
+            alignSelf: "center",
           },
-          width: "95%",
-          marginRight: "auto",
-          marginLeft: "auto",
-          borderRadius: "10px"
+          width: "100%",
+          borderRadius: "10px",
+          marginBottom: "20px",
         }}>
         {cardDetails.map((house) => (
           <ReusableImageCard key={house.id} {...house} />

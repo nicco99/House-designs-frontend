@@ -2,7 +2,8 @@ import { Theme, styled } from "@mui/material/styles";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import HotelIcon from "@mui/icons-material/Hotel";
-import { Grid, Typography } from "@mui/material";
+
+import { Button, Grid, Typography } from "@mui/material";
 import BathtubIcon from "@mui/icons-material/Bathtub";
 import React from "react";
 import Image from "next/image";
@@ -32,6 +33,7 @@ const ReusableImageCard: React.FC<{
           borderRadius: "15px",
           "@media (min-width: 400px)": {
             height: "600px",
+            position: "relative",
           },
         }}>
         <Box sx={{ width: "100%", height: "60%" }}>
@@ -98,6 +100,19 @@ const ReusableImageCard: React.FC<{
           <Typography component="span" variant="subtitle1">
             {propertyCategory}
           </Typography>
+        </Box>
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            width: "100%",
+            position: "absolute",
+            bottom: 2,
+          }}>
+          <Button variant="text">save</Button>
+          <Button sx={{ fontWeigth: "600" }} variant="outlined">
+            view
+          </Button>
         </Box>
       </Box>
     </Grid>
