@@ -73,7 +73,6 @@ const Main = () => {
     <Stack
       sx={{
         gap: 2,
-        // bgColor: "secondary.light",
       }}>
       <Box
         sx={{
@@ -123,6 +122,7 @@ const Main = () => {
           width: "95%",
           marginRight: "auto",
           marginLeft: "auto",
+          borderRadius: "10px"
         }}>
         {cardDetails.map((house) => (
           <ReusableImageCard key={house.id} {...house} />

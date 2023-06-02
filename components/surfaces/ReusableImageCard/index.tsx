@@ -29,7 +29,7 @@ const ReusableImageCard: React.FC<{
           backgroundColor: "#ffffff",
           height: "400px",
           width: "100%",
-          borderRadius: "10px",
+          borderRadius: "15px",
           "@media (min-width: 400px)": {
             height: "600px",
           },
