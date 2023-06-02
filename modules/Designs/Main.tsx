@@ -66,6 +66,15 @@ const cardDetails: CardDetails[] = [
     id: 5,
     image1: massionette5,
   },
+  {
+    price: 170000,
+    propertyType: "5 Bedrooms",
+    propertyCategory: "maisonette",
+    numberOfBathrooms: 5,
+    numberOfBedrooms: 5,
+    id: 5,
+    image1: massionette5,
+  },
 ];
 console.log(cardDetails);
 const Main = () => {

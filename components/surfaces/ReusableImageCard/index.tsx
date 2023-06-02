@@ -1,5 +1,3 @@
-import { Theme, styled } from "@mui/material/styles";
-import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import HotelIcon from "@mui/icons-material/Hotel";
 
@@ -46,7 +44,9 @@ const ReusableImageCard: React.FC<{
         <Box
           sx={{
             width: "100%",
+            height: "30%",
             padding: 3,
+            gap: 2,
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
           }}>
@@ -92,22 +92,21 @@ const ReusableImageCard: React.FC<{
               </Typography>
             </Typography>
           </Box>
-        </Box>
-        <Box sx={{ display: "flex", gap: 2, marginLeft: "10px" }}>
-          <Typography component="span" variant="subtitle1">
+
+          <Typography component="span" variant="subtitle2">
             {propertyType}
           </Typography>
           <Typography component="span" variant="subtitle1">
             {propertyCategory}
           </Typography>
         </Box>
+
         <Box
           sx={{
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
-            width: "100%",
-            position: "absolute",
-            bottom: 2,
+            width: "95%",
+            alignSelf: "center",
           }}>
           <Button variant="text">save</Button>
           <Button sx={{ fontWeigth: "600" }} variant="outlined">
