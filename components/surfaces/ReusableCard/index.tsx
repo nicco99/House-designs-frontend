@@ -12,7 +12,7 @@ const ReusableCard: React.FC<{
   description: string;
 }> = ({ name, image, description }) => {
   return (
-    <Paper
+    <Box
       sx={{
         backgroundColor: "#f5f5f5",
         height: "100%",
@@ -45,8 +45,8 @@ const ReusableCard: React.FC<{
             justifyContent: "space-between",
             width: "90%",
           }}>
-          <Typography variant="body1">
-            Build cost{" "}
+          <Typography variant="subtitle1">
+            {/* price */}
             <Typography variant="subtitle2" component="span">
               Ksh {"123,000"}
             </Typography>
@@ -99,7 +99,7 @@ const ReusableCard: React.FC<{
         </Button>
         <Button variant="outlined">{"More>>"}</Button>
       </Box>
-    </Paper>
+    </Box>
   );
 };
 
