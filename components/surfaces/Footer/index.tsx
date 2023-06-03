@@ -97,7 +97,7 @@ const Footer = () => {
         />
       </Divider>
       <Typography marginTop={5} align="center" variant="body2" color="secondary.light">
-        copyrite
+      Copyright (c) 2023 NICHOLAS GICHOBI
       </Typography>
     </Stack>
   );
