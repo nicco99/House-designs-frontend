@@ -4,7 +4,7 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import { useRouter } from "next/router";
 import CssBaseline from "@mui/material/CssBaseline";
-import BungalowIcon from '@mui/icons-material/Bungalow';
+import BungalowIcon from "@mui/icons-material/Bungalow";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
@@ -68,7 +68,7 @@ export default function Header(props: Props) {
   return (
     <Box sx={{ display: "flex", zIndex: 3 }}>
       <CssBaseline />
-      <AppBar sx={{ backgroundColor: "" }} component="nav">
+      <AppBar sx={{ backgroundColor: "primary.dark" }} component="nav">
         <Toolbar>
           <IconButton
             color="inherit"
@@ -76,14 +76,19 @@ export default function Header(props: Props) {
             edge="start"
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: "none" } }}>
-            <MenuIcon sx={{ stroke: "#ffffff", strokeWidth: 1 }}  />
+            <MenuIcon sx={{ stroke: "#ffffff", strokeWidth: 1 }} />
           </IconButton>
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "flex" }}}>
+            sx={{ flexGrow: 1, display: { xs: "none", sm: "flex" } }}>
             <BungalowIcon sx={{ color: "secondary.light", fontSize: "50px" }} />{" "}
-            <Typography sx={{marginTop: "auto", marginBottom: "auto" }} variant="h6" component="span">SMART DESIGNS</Typography>
+            <Typography
+              sx={{ marginTop: "auto", marginBottom: "auto" }}
+              variant="h6"
+              component="span">
+              SMART DESIGNS
+            </Typography>
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (

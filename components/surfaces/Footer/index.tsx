@@ -6,7 +6,7 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 const Footer = () => {
   return (
     <Stack
-      sx={{ width: "100%", backgroundColor: "primary.main", padding: "20px" }}>
+      sx={{ width: "100%", backgroundColor: "primary.dark", padding: "20px" }}>
       <Stack
         sx={{
           marginBottom: "20px",
@@ -97,7 +97,7 @@ const Footer = () => {
         />
       </Divider>
       <Typography marginTop={5} align="center" variant="body2" color="secondary.light">
-        copyrite
+      Copyright (c) 2023 NICHOLAS GICHOBI
       </Typography>
     </Stack>
   );

@@ -148,7 +148,7 @@ export default function Index() {
           <Typography
             sx={{ width: "70%", lineHeight: "30px", fontWeight: "800" }}
             color="secondary.light"
-            variant="body2">
+            variant="subtitle2">
             At our core, we deliver good designs by combining creativity,
             research, collaboration, and attention to detail, resulting in
             visually appealing and functional solutions that exceed
