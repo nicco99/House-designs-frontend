@@ -13,6 +13,8 @@ import c3 from "../public/c3.png";
 import landing from "../public/landing.jpg";
 import Footer from "../components/surfaces/Footer";
 import ReusableCard from "@/components/surfaces/ReusableCard";
+import OurServices from "@/modules/OurServices";
+import Services from "@/modules/Services";
 
 export default function Index() {
   const items = [
@@ -281,6 +283,8 @@ export default function Index() {
           </Box>
         </Box>
       </Stack>
+      <OurServices />
+      <Services/>
       <Footer />
     </Stack>
   );
