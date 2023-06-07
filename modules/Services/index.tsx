@@ -17,9 +17,14 @@ const Services = () => {
         },
       }}>
       <Box sx={{ width: "100%" }}>
-      "@media (max-width: 600px)": {
-              height: "600px",
-            },}}
+        <Image
+          alt="services"
+          src={services}
+          style={{
+            width: "100%",
+            borderRadius: "50%",
+            height: "600px"
+          }}
         />
       </Box>
       <Box
