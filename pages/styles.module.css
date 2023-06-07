@@ -1435,3 +1435,303 @@
     font-size: 30px;
   }
 }
+.getintouch{
+  text-align: center;
+  color: hsl(100, 35%, 28%);
+  padding-top: 10px;
+  margin-bottom: 5px;
+}
+.contactcontainer{
+  background-color: white;
+  margin-left:10px ;
+  margin-right: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+.contactform{
+  display: flex;
+  flex-direction: column;
+}
+.contactinputs{
+  padding: 10px;
+  margin: 10px;
+}
+.contactinputs:focus{
+  padding: 10px;
+  margin: 10px;
+  outline: none;
+  border-color: hsl(100, 35%, 28%);
+}
+
+.contactmessageinput{
+  padding: 10px;
+  margin: 10px;
+  height: 60px;
+  outline: none;
+}
+.contactmessageinput:focus{
+  padding: 10px;
+  margin: 10px;
+  height: 60px;
+  border-color: hsl(100, 35%, 28%);
+}
+
+.contactsubmitbutton{
+  place-content: center;
+  width: 100px;
+  height: 30px;
+  margin-left: 10px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  background-color: hsl(100, 35%, 28%);
+}
+ 
+@media screen and (min-width: 440px) and (max-width: 575px) {
+  .maincontactcontainer{
+    display: flex;
+    justify-content: center;
+  }
+  .getintouch{
+    text-align: center;
+    color: hsl(100, 35%, 28%);
+    padding-top: 10px;
+    margin-bottom: 5px;
+  }
+  .contactcontainer{
+    background-color: white;
+    margin-left:10px ;
+    margin-right: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    width: 70%;
+
+  }
+  .contactform{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .contactinputs{
+    padding: 10px;
+    margin: 10px;
+    width: 80%;
+  }
+  .contactinputs:focus{
+    padding: 10px;
+    margin: 10px;
+    outline: none;
+    border-color: hsl(100, 35%, 28%);
+  }
+  
+  .contactmessageinput{
+    padding: 10px;
+    margin: 10px;
+    height: 60px;
+    outline: none;
+    width: 80%;
+
+  }
+  .contactmessageinput:focus{
+    padding: 10px;
+    margin: 10px;
+    height: 60px;
+    border-color: hsl(100, 35%, 28%);
+  }
+  
+  .contactsubmitbutton{
+    place-content: center;
+    width: 100px;
+    height: 30px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background-color: hsl(100, 35%, 28%);
+  }
+}
+@media screen and (min-width: 576px) and (max-width: 768px) {
+  .maincontactcontainer{
+    display: flex;
+    justify-content: center;
+  }
+  .getintouch{
+    text-align: center;
+    color: hsl(100, 35%, 28%);
+    padding-top: 10px;
+    margin-bottom: 5px;
+  }
+  .contactcontainer{
+    background-color: white;
+    margin-left:10px ;
+    margin-right: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    width: 70%;
+
+  }
+  .contactform{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .contactinputs{
+    padding: 10px;
+    margin: 10px;
+    width: 80%;
+  }
+  .contactinputs:focus{
+    padding: 10px;
+    margin: 10px;
+    outline: none;
+    border-color: hsl(100, 35%, 28%);
+  }
+  
+  .contactmessageinput{
+    padding: 10px;
+    margin: 10px;
+    height: 60px;
+    outline: none;
+    width: 80%;
+
+  }
+  .contactmessageinput:focus{
+    padding: 10px;
+    margin: 10px;
+    height: 60px;
+    border-color: hsl(100, 35%, 28%);
+  }
+  
+  .contactsubmitbutton{
+    place-content: center;
+    width: 100px;
+    height: 30px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background-color: hsl(100, 35%, 28%);
+  }
+}
+
+@media screen and (min-width: 769px) and (min-width: 1023px) {
+  .maincontactcontainer{
+    display: flex;
+    justify-content: center;
+  }
+  .getintouch{
+    text-align: center;
+    color: hsl(100, 35%, 28%);
+    padding-top: 10px;
+    margin-bottom: 5px;
+  }
+  .contactcontainer{
+    background-color: white;
+    margin-left:10px ;
+    margin-right: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    width: 50%;
+
+  }
+  .contactform{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .contactinputs{
+    padding: 10px;
+    margin: 10px;
+    width: 80%;
+  }
+  .contactinputs:focus{
+    padding: 10px;
+    margin: 10px;
+    outline: none;
+    border-color: hsl(100, 35%, 28%);
+  }
+  
+  .contactmessageinput{
+    padding: 10px;
+    margin: 10px;
+    height: 60px;
+    outline: none;
+    width: 80%;
+
+  }
+  .contactmessageinput:focus{
+    padding: 10px;
+    margin: 10px;
+    height: 60px;
+    border-color: hsl(100, 35%, 28%);
+  }
+  
+  .contactsubmitbutton{
+    place-content: center;
+    width: 100px;
+    height: 30px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background-color: hsl(100, 35%, 28%);
+  }
+}
+@media screen and (min-width: 1024px) {
+  .maincontactcontainer{
+    display: flex;
+    justify-content: center;
+  }
+  .getintouch{
+    text-align: center;
+    color: hsl(100, 35%, 28%);
+    padding-top: 10px;
+    margin-bottom: 5px;
+  }
+  .contactcontainer{
+    background-color: white;
+    margin-left:10px ;
+    margin-right: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    width: 30%;
+
+  }
+  .contactform{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .contactinputs{
+    padding: 10px;
+    margin: 10px;
+    width: 50%;
+  }
+  .contactinputs:focus{
+    padding: 10px;
+    margin: 10px;
+    outline: none;
+    border-color: hsl(100, 35%, 28%);
+  }
+  
+  .contactmessageinput{
+    padding: 10px;
+    margin: 10px;
+    height: 60px;
+    outline: none;
+    width: 50%;
+
+  }
+  .contactmessageinput:focus{
+    padding: 10px;
+    margin: 10px;
+    height: 60px;
+    border-color: hsl(100, 35%, 28%);
+  }
+  
+  .contactsubmitbutton{
+    place-content: center;
+    width: 100px;
+    height: 30px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background-color: hsl(100, 35%, 28%);
+  }
+}

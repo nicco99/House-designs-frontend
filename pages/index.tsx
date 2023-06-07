@@ -248,6 +248,18 @@ export default function Index() {
           </div>
         </div>
       </div>
+      <div className={styles.maincontactcontainer}>
+        <div className={styles.contactcontainer}>
+          <h3 className={styles.getintouch}>GET IN TOUCH</h3>
+          <form action="" className={styles.contactform}>
+            <input type="text" placeholder="Name" className={styles.contactinputs}></input>
+            <input type="text" placeholder="Email" className={styles.contactinputs}></input>
+            <input type="text" placeholder="Subject"className={styles.contactinputs}></input>
+            <input  type="text" placeholder="Message"className={styles.contactmessageinput}></input>
+            <button type="submit" className={styles.contactsubmitbutton} > SEND</button>
+          </form>
+        </div>
+      </div>
       {/* <Stack sx={{ width: "100", backgroundColor: "secondary.light" }}>
         <Box
           sx={{ padding: 3, display: "flex", flexDirection: "column", gap: 4 }}>
