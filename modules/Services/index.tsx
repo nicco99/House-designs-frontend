@@ -20,7 +20,7 @@ const Services = () => {
         <Image
           alt="services"
           src={services}
-          style={{ width: "100%",  borderRadius: "50%" }}
+          style={{ width: "100%", "@media (max-width: 600px)": {height: "600px"},  borderRadius: "50%" }}
         />
       </Box>
       <Box
