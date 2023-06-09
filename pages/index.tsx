@@ -379,8 +379,8 @@ export default function Index() {
         </Box>
       </Stack> */}
       <OurServices />
-       <Services/>
+       {/* <Services/>/ */}
       <Footer />
     </Stack>
-  );
+  );s
 }
