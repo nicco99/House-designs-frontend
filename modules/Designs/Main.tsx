@@ -77,7 +77,7 @@ const cardDetails: CardDetails[] = [
   },
 ];
 console.log(cardDetails);
-const Main = ({designs}) => {
+const Main: React.FC<{ designs: any }> = ({ designs }) => {
   return (
     <Stack
       sx={{
