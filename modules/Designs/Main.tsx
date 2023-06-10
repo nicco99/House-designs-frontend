@@ -77,7 +77,7 @@ const cardDetails: CardDetails[] = [
   },
 ];
 console.log(cardDetails);
-const Main = () => {
+const Main = ({designs}) => {
   return (
     <Stack
       sx={{
@@ -133,8 +133,8 @@ const Main = () => {
           borderRadius: "10px",
           marginBottom: "20px",
         }}>
-        {cardDetails.map((house) => (
-          <ReusableImageCard key={house.id} {...house} />
+        {designs.map((design: any) => (
+          <ReusableImageCard key={design.design_id} {...design} />
         ))}
       </Grid>
     </Stack>

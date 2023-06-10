@@ -8,17 +8,17 @@ import Image from "next/image";
 
 const ReusableImageCard: React.FC<{
   price: number;
-  propertyType: string;
-  propertyCategory: string;
-  numberOfBathrooms: number;
-  numberOfBedrooms: number;
+  property_type: string;
+  property_name: string;
+  no_of_bathrooms: number;
+  no_of_bedrooms: number;
   image1: any;
 }> = ({
   price,
-  propertyType,
-  propertyCategory,
-  numberOfBathrooms,
-  numberOfBedrooms,
+  property_type,
+  property_name,
+  no_of_bathrooms,
+  no_of_bedrooms,
   image1,
 }) => {
   return (
@@ -36,9 +36,11 @@ const ReusableImageCard: React.FC<{
         }}>
         <Box sx={{ width: "100%", height: "60%" }}>
           <Image
+          width={300}
+          height={400}
             style={{ width: "100%", height: "100%", borderRadius: "15px" }}
             src={image1}
-            alt={propertyCategory}
+            alt={image1}
           />
         </Box>
         <Box
@@ -71,7 +73,7 @@ const ReusableImageCard: React.FC<{
                 <HotelIcon />
               </Typography>
               <Typography variant="subtitle2" component="span">
-                {numberOfBedrooms}
+                {no_of_bedrooms}
               </Typography>
             </Typography>
             <Typography
@@ -88,16 +90,16 @@ const ReusableImageCard: React.FC<{
                 <BathtubIcon />
               </Typography>
               <Typography variant="subtitle2" component="span">
-                {numberOfBathrooms}
+                {no_of_bathrooms}
               </Typography>
             </Typography>
           </Box>
 
           <Typography component="span" variant="subtitle2">
-            {propertyType}
+            {property_name}
           </Typography>
           <Typography component="span" variant="subtitle1">
-            {propertyCategory}
+            {property_type}
           </Typography>
         </Box>
 
