@@ -40,7 +40,7 @@ const ReusableImageCard: React.FC<{
           height={400}
             style={{ width: "100%", height: "100%", borderRadius: "15px" }}
             src={image1}
-            alt={image1}
+            alt=""
           />
         </Box>
         <Box

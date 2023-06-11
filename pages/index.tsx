@@ -382,5 +382,5 @@ export default function Index() {
        {/* <Services/>/ */}
       <Footer />
     </Stack>
-  );s
+  );
 }
