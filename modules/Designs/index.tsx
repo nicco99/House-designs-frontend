@@ -4,7 +4,7 @@ import Header from "@/components/surfaces/Header";
 import Footer from "@/components/surfaces/Footer";
 import Main from "./Main";
 
-const Designs = ({designs}) => {
+const Designs: React.FC<{ designs: any }> = ({designs}) => {
   // console.log(designs)
   return (
     <Stack

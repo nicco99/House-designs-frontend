@@ -9,7 +9,7 @@ export const getStaticProps = async () => {
   };
 };
 
-const DesignsPage: NextPageWithLayout  = ({designs}) => {
+const DesignsPage: NextPageWithLayout<{designs: any}>  = ({designs}) => {
 
   return <Designs designs={designs}/>;
 };
