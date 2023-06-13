@@ -11,7 +11,6 @@ import ReusableImageCard from "@/components/surfaces/ReusableImageCard";
 import TuneIcon from "@mui/icons-material/Tune";
 
 
-const [houses,  setHouses] = useState()
 interface CardDetails {
   price: number;
   propertyType: string; //4 bedroom
