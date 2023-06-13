@@ -60,6 +60,8 @@ const ReusableCard: React.FC<{
           <Typography
             sx={{
               color: "primary.dark",
+              alignItems: "center",
+              display: "flex",
               gap: 1,
             }}
             variant="subtitle2">
