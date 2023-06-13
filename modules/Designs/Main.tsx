@@ -147,9 +147,6 @@ const Main: React.FC<{ designs: any }> = ({ designs }) => {
           borderRadius: "10px",
           marginBottom: "20px",
         }}>
-        {/* {designs.map((design: any) => (
-          <ReusableImageCard key={design.design_id} {...design} />
-        ))} */}
         {designs.map((design: any) => (
           <ReusableCard key={design.design_id} {...design} />
         ))}
