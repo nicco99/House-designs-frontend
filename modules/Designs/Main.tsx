@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Stack from "@mui/material/Stack";
 
 import { Grid, Typography, Box, Button } from "@mui/material";
@@ -10,6 +10,8 @@ import massionette5 from "../../public/massionette5.jpg";
 import ReusableImageCard from "@/components/surfaces/ReusableImageCard";
 import TuneIcon from "@mui/icons-material/Tune";
 
+
+const [houses,  setHouses] = useState()
 interface CardDetails {
   price: number;
   propertyType: string; //4 bedroom

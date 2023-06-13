@@ -4,6 +4,9 @@ import Footer from "../../components/surfaces/Footer";
 import Header from "../../components/surfaces/Header"
 import pdisplay from "../../public/pdisplay.jpeg"
 import Image from "next/image";
+import person4 from "../../public/person4.jpeg"
+import person3 from "../../public/person3.jpeg"
+
 
 
 function index() {
@@ -39,13 +42,13 @@ function index() {
           <p className={styles.kkisf}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
           </div>
           <div className={styles.edggf}>
-          <Image src={pdisplay} alt={'john kadere'} className={styles.hvsbf}></Image>
+          <Image src={person4} alt={'john kadere'} className={styles.hvsbf}></Image>
           <h3 className={styles.vdsvd}>JOHN KADERE</h3>
           <h4 className={styles.shvbs}>MANAGING DIRECTOR</h4>
           <p className={styles.kkisf}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
           </div>          
           <div className={styles.edggf}>
-          <Image src={pdisplay} alt={'john kadere'} className={styles.hvsbf}></Image>
+          <Image src={person3} alt={'john kadere'} className={styles.hvsbf}></Image>
           <h3 className={styles.vdsvd}>JOHN KADERE</h3>
           <h4 className={styles.shvbs}>MANAGING DIRECTOR</h4>
           <p className={styles.kkisf}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
