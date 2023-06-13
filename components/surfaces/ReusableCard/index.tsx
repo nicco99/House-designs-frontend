@@ -1,105 +1,88 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import { Typography, Stack, Button, Paper, Divider } from "@mui/material";
-import BookmarkIcon from "@mui/icons-material/Bookmark";
-import Image from "next/image";
-import LocalHotelIcon from "@mui/icons-material/LocalHotel";
+
+import Card from "@mui/material/Card";
+import CardMedia from "@mui/material/CardMedia";
+import CardContent from "@mui/material/CardContent";
+import CardActions from "@mui/material/CardActions";
+
 import BathtubIcon from "@mui/icons-material/Bathtub";
+import HotelIcon from "@mui/icons-material/Hotel";
 
 const ReusableCard: React.FC<{
-  name: string;
-  image: any;
-  description: string;
-}> = ({ name, image, description }) => {
+  total_price: number;
+  property_type: string;
+  property_name: string;
+  no_of_bathrooms: number;
+  no_of_bedrooms: number;
+  image1: any;
+}> = ({
+  total_price,
+  property_type,
+  property_name,
+  no_of_bathrooms,
+  no_of_bedrooms,
+  image1,
+}) => {
   return (
-    <Box
-      sx={{
-        backgroundColor: "#f5f5f5",
-        height: "100%",
-        position: "relative",
-        borderRadius: "10px",
-        boxShadow: "0px 10px 6px -6px hsl(100, 35%, 28%)",
-        gap: 1,
-      }}>
-      <Image
-        alt={image}
-        src={image}
-        style={{
-          height: "45%",
-          width: "100%",
-          borderRadius: "10px",
-        }}
-      />
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          padding: "10px",
+    <Card sx={{ maxWidth: "100%" }}>
+      <CardMedia sx={{ height: 250 }} image={image1} title={property_name} />
+      <CardContent sx={{ gap: "20px" }}>
+        <Typography gutterBottom variant="h5" component="div">
+          {property_type}
+        </Typography>
+        <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
+          <Typography variant="body1">Build Cost</Typography>
+          <Typography fontWeight={700} variant="subtitle2">
+            {total_price}
+          </Typography>
+        </Box>
 
-          marginLeft: "10px",
-          gap: 1,
-        }}>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            width: "90%",
-          }}>
-          <Typography variant="subtitle1">
-            {/* price */}
+        <Box sx={{ display: "flex", gap: 2, alignItems: "center",justifyContent: "right", }}>
+          <Typography
+            sx={{
+              color: "primary.dark",
+              alignItems: "center",
+              display: "flex",
+              gap: 1,
+            }}
+            variant="subtitle2">
+            {" "}
             <Typography variant="subtitle2" component="span">
-              Ksh {"123,000"}
+              {" "}
+              <HotelIcon />
+            </Typography>
+            <Typography variant="subtitle2" component="span">
+              {no_of_bedrooms}
             </Typography>
           </Typography>
-          <Stack
+          <Typography
             sx={{
-              gap: 3,
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-            }}>
-            <Box sx={{ display: "flex", gap: 1 }}>
-              <LocalHotelIcon /> <Typography variant="subtitle2">3</Typography>
-            </Box>
-            <Box sx={{ display: "flex", gap: 1 }}>
-              <BathtubIcon /> <Typography variant="subtitle2">2</Typography>
-            </Box>
-          </Stack>
-        </Box>
-
-        <Box
-          sx={{
-            display: "grid",
-            gridTemplateColumns: "1fr",
-            gap: 1,
-            "@media(max-width: 600px": {
+              color: "primary.dark",
               gap: 1,
-            },
-          }}>
-          <Stack sx={{ display: "grid", gridTemplateColumns: "1fr", gap: 1 }}>
-            <Typography component="span" variant="subtitle1">
-              {name}
+            }}
+            variant="subtitle2">
+            {" "}
+            <Typography variant="subtitle2" component="span">
+              {" "}
+              <BathtubIcon />
             </Typography>
-          </Stack>
+            <Typography variant="subtitle2" component="span">
+              {no_of_bathrooms}
+            </Typography>
+          </Typography>
         </Box>
-      </Box>
 
-      <Box
-        sx={{
-          width: "90%",
-
-          display: "grid",
-          position: "absolute",
-          bottom: 4,
-          marginLeft: "auto",
-          marginRight: "auto",
-          gridTemplateColumns: "1fr 1fr",
-        }}>
-        <Button variant="text">
-          Save plan <BookmarkIcon />
+        <Typography variant="subtitle1">{property_name}</Typography>
+      </CardContent>
+      <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Button size="small">Save</Button>
+        <Button variant="contained" size="small">
+          Browse Plan
         </Button>
-        <Button variant="outlined">{"More>>"}</Button>
-      </Box>
-    </Box>
+      </CardActions>
+    </Card>
   );
 };
 

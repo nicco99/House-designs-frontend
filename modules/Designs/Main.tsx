@@ -1,6 +1,6 @@
 import React from "react";
 import Stack from "@mui/material/Stack";
-
+import ReusableCard from "@/components/surfaces/ReusableCard";
 import { Grid, Typography, Box, Button } from "@mui/material";
 import massionette1 from "../../public/massionette1.jpg";
 import massionette2 from "../../public/massionette2.jpg";
@@ -120,23 +120,40 @@ const Main: React.FC<{ designs: any }> = ({ designs }) => {
           <TuneIcon />
         </Button>
       </Box>
-      <Grid
-        container
-        spacing={2}
+      <Stack
         sx={{
           alignSelf: "center",
+          display: "grid",
+          rowGap: 2,
+          columnGap: 2,
+          gridTemplateColumns: "1fr 1fr 1fr",
           "@media(min-width: 600px)": {
             width: "90%",
             alignSelf: "center",
+            display: "grid",
+            rowGap: 2,
+            columnGap: 2,
+            gridTemplateColumns: "1fr 1fr 1fr",
+          },
+          "@media(max-width: 600px)": {
+            width: "90%",
+            alignSelf: "center",
+            display: "grid",
+            rowGap: 2,
+            columnGap: 2,
+            gridTemplateColumns: "1fr ",
           },
           width: "100%",
           borderRadius: "10px",
           marginBottom: "20px",
         }}>
-        {designs.map((design: any) => (
+        {/* {designs.map((design: any) => (
           <ReusableImageCard key={design.design_id} {...design} />
+        ))} */}
+        {designs.map((design: any) => (
+          <ReusableCard key={design.design_id} {...design} />
         ))}
-      </Grid>
+      </Stack>
     </Stack>
   );
 };
