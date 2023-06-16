@@ -11,19 +11,23 @@ import BathtubIcon from "@mui/icons-material/Bathtub";
 import HotelIcon from "@mui/icons-material/Hotel";
 
 const ReusableCard: React.FC<{
+  design_id: number;
   total_price: number;
   property_type: string;
   property_name: string;
   no_of_bathrooms: number;
   no_of_bedrooms: number;
   image1: any;
+  location: string;
 }> = ({
   total_price,
+  location,
   property_type,
   property_name,
   no_of_bathrooms,
   no_of_bedrooms,
   image1,
+  design_id,
 }) => {
   return (
     <Card sx={{ maxWidth: "100%" }}>
@@ -39,7 +43,13 @@ const ReusableCard: React.FC<{
           </Typography>
         </Box>
 
-        <Box sx={{ display: "flex", gap: 2, alignItems: "center",justifyContent: "right", }}>
+        <Box
+          sx={{
+            display: "flex",
+            gap: 2,
+            alignItems: "center",
+            justifyContent: "right",
+          }}>
           <Typography
             sx={{
               color: "primary.dark",
@@ -77,10 +87,13 @@ const ReusableCard: React.FC<{
         </Box>
 
         <Typography variant="subtitle1">{property_name}</Typography>
+        <Typography variant="body1">
+          Location<Typography variant="subtitle2">{location}</Typography>
+        </Typography>
       </CardContent>
       <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
         <Button size="small">Save</Button>
-        <Button variant="contained" size="small">
+        <Button href={`designs/${design_id}`} variant="contained" size="small">
           Browse Plan
         </Button>
       </CardActions>
