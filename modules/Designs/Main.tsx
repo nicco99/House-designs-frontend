@@ -1,14 +1,27 @@
 import React from "react";
+import Paper from "@mui/material/Paper";
+import InputBase from "@mui/material/InputBase";
+import Divider from "@mui/material/Divider";
+import FilterListIcon from '@mui/icons-material/FilterList';
+import Autocomplete from "@mui/material/Autocomplete";
+import SearchIcon from "@mui/icons-material/Search";
+import DirectionsIcon from "@mui/icons-material/Directions";
+import Dialog from "@mui/material/Dialog";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
+import CloseIcon from "@mui/icons-material/Close";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
 import ReusableCard from "@/components/surfaces/ReusableCard";
-import { Grid, Typography, Box, Button } from "@mui/material";
-import massionette1 from "../../public/massionette1.jpg";
-import massionette2 from "../../public/massionette2.jpg";
-import massionette3 from "../../public/massionette3.jpg";
-import massionette4 from "../../public/massionette4.jpg";
-import massionette5 from "../../public/massionette5.jpg";
-import ReusableImageCard from "@/components/surfaces/ReusableImageCard";
+import { useState } from "react";
+import { Typography, Box, Button } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import Slide from "@mui/material/Slide";
+
 import TuneIcon from "@mui/icons-material/Tune";
+import { TransitionProps } from "@mui/material/transitions";
 
 interface CardDetails {
   price: number;
@@ -20,64 +33,37 @@ interface CardDetails {
   image1: any;
 }
 
-const cardDetails: CardDetails[] = [
-  {
-    price: 128000,
-    propertyType: "4 Bedrooms",
-    propertyCategory: "maisonette",
-    numberOfBathrooms: 3,
-    numberOfBedrooms: 4,
-    id: 1,
-    image1: massionette1,
+const Transition = React.forwardRef(function Transition(
+  props: TransitionProps & {
+    children: React.ReactElement;
   },
-  {
-    price: 150000,
-    propertyType: "6 Bedrooms",
-    propertyCategory: "maisonette",
-    numberOfBathrooms: 5,
-    numberOfBedrooms: 6,
-    id: 2,
-    image1: massionette2,
-  },
-  {
-    price: 200000,
-    propertyType: "6 Bedrooms",
-    propertyCategory: "maisonette",
-    numberOfBathrooms: 5,
-    numberOfBedrooms: 6,
-    id: 3,
-    image1: massionette3,
-  },
-  {
-    price: 200000,
-    propertyType: "7 Bedrooms",
-    propertyCategory: "maisonette",
-    numberOfBathrooms: 5,
-    numberOfBedrooms: 7,
-    id: 4,
-    image1: massionette4,
-  },
-  {
-    price: 170000,
-    propertyType: "5 Bedrooms",
-    propertyCategory: "maisonette",
-    numberOfBathrooms: 5,
-    numberOfBedrooms: 5,
-    id: 5,
-    image1: massionette5,
-  },
-  {
-    price: 170000,
-    propertyType: "5 Bedrooms",
-    propertyCategory: "maisonette",
-    numberOfBathrooms: 5,
-    numberOfBedrooms: 5,
-    id: 5,
-    image1: massionette5,
-  },
-];
-console.log(cardDetails);
+  ref: React.Ref<unknown>
+) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
 const Main: React.FC<{ designs: any }> = ({ designs }) => {
+  const [open, setOpen] = React.useState(false);
+  const [query, setQuery] = useState(""); //filter state
+  const [searchProperty, setSearchProperty] = useState("county");
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+    setSearchProperty(newValue);
+  };
+  // const filtered = designs?.filter(
+  //   (obj: any) => obj[searchProperty].toLowerCase() === query.toLowerCase()
+  // );
+  const filtered = designs?.filter((obj: any) =>
+    obj[searchProperty]?.toLowerCase().startsWith(query.toLowerCase())
+  );
+
   return (
     <Stack
       sx={{
@@ -109,17 +95,113 @@ const Main: React.FC<{ designs: any }> = ({ designs }) => {
           variant="subtitle1">
           Innovative Solutions for Creating Beautiful Designs{" "}
         </Typography>
+
         <Typography align="center" sx={{ marginX: 4 }} variant="h6">
           Explore our extensive catalog to find the perfect house plan that
           matches your dreams, and let us transform it into a stunning reality.
         </Typography>
         <Button
+          onClick={handleClickOpen}
           variant="outlined"
           sx={{ color: "primary.dark", marginBottom: "20px" }}>
           Filter Designs
           <TuneIcon />
         </Button>
       </Box>
+      <Dialog
+        fullScreen
+        open={open}
+        onClose={handleClose}
+        TransitionComponent={Transition}>
+        <AppBar sx={{ position: "relative" }}>
+          <Toolbar>
+            <IconButton
+              edge="start"
+              color="inherit"
+              onClick={handleClose}
+              aria-label="close">
+              <CloseIcon />
+            </IconButton>
+            <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
+              Search designs
+            </Typography>
+            <Button autoFocus color="inherit" onClick={handleClose}>
+              Back
+            </Button>
+          </Toolbar>
+        </AppBar>
+
+        <Box
+          sx={{
+            marginRight: "auto",
+            marginLeft: "auto",
+            width: "70%",
+            "@media (max-width: 600px)": {
+              width: "95%",
+            },
+          }}>
+          <Tabs value={searchProperty} onChange={handleChange} centered>
+            <Tab value="location" label="Location" />
+            <Tab value="property_name" label="Property Name" />
+            <Tab value="county" label="County" />
+          </Tabs>
+        </Box>
+        <Paper
+          component="form"
+          sx={{
+            p: "2px 4px",
+            border: "1px solid #A4BE7B",
+            display: "flex",
+            alignItems: "center",
+            marginTop: "10px",
+            height: "70px",
+            marginRight: "auto",
+            marginLeft: "auto",
+            width: "70%",
+            "@media (max-width: 600px)": {
+              width: "95%",
+            },
+          }}>
+          <Stack direction="row" sx={{ flexGrow: 1 }}>
+            {" "}
+            <IconButton sx={{ p: "10px" }} aria-label="menu">
+              <FilterListIcon sx={{color: "primary.dark"}} />
+            </IconButton>
+            <InputBase
+              onChange={(e: any) => setQuery(e.target.value)}
+              sx={{ ml: 1, flex: 1 }}
+              placeholder="Search Designs"
+              inputProps={{ "aria-label": "search Designs" }}
+            />
+            <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+            <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
+              <SearchIcon />
+            </IconButton>
+          </Stack>
+        </Paper>
+        <br></br>
+        <Typography align="center" variant="subtitle1">
+          {filtered?.length} results found
+        </Typography>
+        <Stack
+          sx={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr 1fr",
+            marginRight: "auto",
+            marginLeft: "auto",
+            width: "80%",
+            gap: "10px",
+            marginTop: "20px",
+            "@media (max-width: 600px)": {
+              display: "grid",
+              gridTemplateColumns: "  1fr",
+            },
+          }}>
+          {filtered.map((design: any) => (
+            <ReusableCard key={design.design_id} {...design} />
+          ))}
+        </Stack>
+      </Dialog>
       <Stack
         sx={{
           alignSelf: "center",

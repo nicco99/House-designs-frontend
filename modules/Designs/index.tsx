@@ -5,7 +5,7 @@ import Footer from "@/components/surfaces/Footer";
 import Main from "./Main";
 
 const Designs: React.FC<{ designs: any }> = ({designs}) => {
-  // console.log(designs)
+
   return (
     <Stack
       sx={{
