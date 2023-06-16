@@ -27,7 +27,7 @@ export const getStaticProps = async (context: any) => {
 };
 
 const DesignPage: React.FC<{ design: any }> = ({ design }) => {
-  console.log(design);
+
   return <div>{design.design_id}</div>;
 };
 
