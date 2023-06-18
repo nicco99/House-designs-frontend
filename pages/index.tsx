@@ -44,7 +44,7 @@ type Contact = {
 };
 export default function Index() {
   const [open, setOpen] = useState<boolean>(false);
-  const router = useRouter();
+
   const {
     register,
     handleSubmit,
