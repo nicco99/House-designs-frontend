@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Typography from "@mui/material/Typography";
+
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import Image from "next/image";
@@ -13,7 +14,7 @@ import { Chip, Button, Stack, TextField, Autocomplete } from "@mui/material";
 import Header from "@/components/surfaces/Header";
 import { TypeAnimation } from "react-type-animation";
 import { Paper } from "@mui/material";
-
+import { useRouter } from "next/router";
 import construction from "../public/construction.jpeg";
 import landing from "../public/landing.jpg";
 import Footer from "../components/surfaces/Footer";
@@ -43,9 +44,11 @@ type Contact = {
 };
 export default function Index() {
   const [open, setOpen] = useState<boolean>(false);
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<Contact>({
     resolver: yupResolver(contactSchema),
@@ -64,6 +67,7 @@ export default function Index() {
       .then((data) => {
         setOpen(true);
         console.log("message sent");
+        reset();
       });
   };
 
