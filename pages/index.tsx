@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import Typography from "@mui/material/Typography";
-
+import illustration from "../public/illustration2.png";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import Image from "next/image";
 import Box from "@mui/material/Box";
 import axios from "axios";
 import Snackbar from "@mui/material/Snackbar";
-import illustration from "../public/illustration.jpg";
 import Link from "next/link";
 import contact from "../public/contacts.jpeg";
 import { Chip, Button, Stack, TextField, Autocomplete } from "@mui/material";
@@ -93,9 +92,10 @@ export default function Index() {
       <Stack
         sx={{
           width: "100%",
-          backgroundImage: `url(${landing.src})`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
+          backgroundColor: "#ffffff",
+          // backgroundImage: `url(${landing.src})`,
+          // backgroundRepeat: "no-repeat",
+          // backgroundSize: "cover",
           marginTop: "30px",
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
@@ -117,17 +117,17 @@ export default function Index() {
           }}>
           <Typography
             sx={{ fontWeight: "800" }}
-            color="secondary.light"
+            color="primary.dark"
             variant="h1">
             <TypeAnimation
               sequence={[
-                "We Build Quality DESIGNS", // Types 'One'
+                "OUR QUALITY DESIGNS", // Types 'One'
                 1000, // Waits 1s
-                "We Design Appartments",
+                "We Design Appartments..",
                 1000, // Waits 2s
-                "We Design Bungalos",
+                "We Design Bungalows..",
                 1000,
-                "We Design Massionate",
+                "We Design Massionates..",
                 1000,
                 //'Two Three', // Types 'Three' without deleting 'Two'
               ]}
@@ -137,15 +137,20 @@ export default function Index() {
             />
           </Typography>
           <Typography
-            sx={{ width: "70%", lineHeight: "30px", fontWeight: "800" }}
-            color="secondary.light"
-            variant="subtitle2">
+            sx={{
+              width: "70%",
+              lineHeight: "30px",
+              fontWeight: "800",
+              letterSpacing: "2px",
+            }}
+            color="primary.dark"
+            variant="subtitle1">
             At our core, we deliver good designs by combining creativity,
             research, collaboration, and attention to detail, resulting in
             visually appealing and functional solutions that exceed
             expectations.
           </Typography>
-          <Button size="large" variant="contained">
+          <Button href="/designs" size="large" variant="contained">
             Browse Designs
           </Button>
         </Stack>
@@ -154,7 +159,16 @@ export default function Index() {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-          }}></Stack>
+            padding: "20px",
+          }}>
+          <Image
+            height={400}
+            width={500}
+            style={{ height: "60%", width: "70%" }}
+            alt="illustration"
+            src={illustration}
+          />
+        </Stack>
       </Stack>
       <div className={styles.welcomecontainer}>
         <div className={styles.welcomeholder}>
@@ -282,47 +296,58 @@ export default function Index() {
           </div>
         </div>
       </div>
-      <div className={styles.maincontactcontainer}>
-        <div className={styles.contactcontainer}>
-          <h3 className={styles.getintouch}>GET IN TOUCH</h3>
+      <Stack>
+        <Stack
+          sx={{
+            alignItems: "center",
+            padding: "20px",
+            backgroundColor: "rgba(255, 255, 255, 0.5)",
+          }}
+          gap={2}>
+          <Typography variant="subtitle1">GET IN TOUCH</Typography>
           <Stack
+            sx={{
+              "@media (min-width: 600px)": {
+                width: "60%",
+              },
+            }}
             component="form"
             onSubmit={handleSubmit(onSubmit)}
-            className={styles.contactform}>
+            gap={3}>
             <TextField
-              type="text"
+              sx={{ width: "90%" }}
               label="Full Name"
               {...register("name")}
-            //  error={errors.name?}
+              // className={styles.contactinputs}
+              error={!!errors.name}
               helperText={errors.name?.message}
-              className={styles.contactinputs} />
-          
-            <input
-              type="email"
-              placeholder="Email"
+            />
+            <TextField
+              sx={{ width: "90%" }}
+              label="Email"
               {...register("email")}
-              className={styles.contactinputs}></input>
-            <Typography component="span" sx={{ color: "red" }}>
-              {errors.email?.message}
-            </Typography>
-            <input
-              type="text"
-              placeholder="Subject"
+              // className={styles.contactinputs}
+              error={!!errors.email}
+              helperText={errors.email?.message}
+            />
+            <TextField
+              sx={{ width: "90%" }}
+              label="Subject"
               {...register("subject")}
-              className={styles.contactinputs}></input>
-            <Typography component="span" sx={{ color: "red" }}>
-              {errors.subject?.message}
-            </Typography>
-            <input
-              type="text"
-              placeholder="Message"
+              // className={styles.contactinputs}
+              error={!!errors.subject}
+              helperText={errors.subject?.message}
+            />
+            <TextField
+              sx={{ width: "90%" }}
+              label="Message"
               {...register("message")}
-              className={styles.contactmessageinput}></input>
-            <Typography component="span" sx={{ color: "red" }}>
-              {errors.message?.message}
-            </Typography>
+              // className={styles.contactinputs}
+              error={!!errors.message}
+              helperText={errors.message?.message}
+            />
             <Button
-              sx={{ marginBottom: "20px" }}
+              sx={{ marginBottom: "20px", width: "90%" }}
               variant="contained"
               type="submit">
               {" "}
@@ -335,9 +360,9 @@ export default function Index() {
             onClose={handleClose}
             message="Message sent"
           />
-        </div>
-      </div>
-      <OurServices />
+        </Stack>
+      </Stack>
+      {/* <OurServices /> */}
       <Footer />
     </Stack>
   );
