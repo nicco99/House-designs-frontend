@@ -1,7 +1,7 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import { Typography, Stack, Button, Paper, Divider } from "@mui/material";
-
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
@@ -19,6 +19,9 @@ const ReusableCard: React.FC<{
   no_of_bedrooms: number;
   image1: any;
   location: string;
+  county: string;
+  status: string;
+  property_size: string;
 }> = ({
   total_price,
   location,
@@ -28,6 +31,9 @@ const ReusableCard: React.FC<{
   no_of_bedrooms,
   image1,
   design_id,
+  county,
+  status,
+  property_size
 }) => {
   return (
     <Card sx={{ maxWidth: "100%" }}>
@@ -86,13 +92,23 @@ const ReusableCard: React.FC<{
           </Typography>
         </Box>
 
-        <Typography variant="subtitle1">{property_name}</Typography>
-        <Typography variant="body1">
-          Location<Typography variant="subtitle2">{location}</Typography>
+        <Typography gutterBottom variant="subtitle1">{property_name}</Typography>
+        <Typography variant="body1" gap={1} sx={{ display: "flex" }}>
+          <LocationOnIcon
+            sx={{
+              fontSize: "20px",
+              color: "primary.main",
+              lineHeight: "22px",
+            }}
+          />
+
+          <Typography variant="subtitle2">
+            {location} , {county}
+          </Typography>
         </Typography>
       </CardContent>
       <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Button size="small">Save</Button>
+        <Typography variant="h6">{property_size}</Typography>
         <Button href={`designs/${design_id}`} variant="contained" size="small">
           Browse Plan
         </Button>
