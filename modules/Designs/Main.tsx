@@ -60,9 +60,12 @@ const Main: React.FC<{ designs: any }> = ({ designs }) => {
   // const filtered = designs?.filter(
   //   (obj: any) => obj[searchProperty].toLowerCase() === query.toLowerCase()
   // );
-  const filtered = designs?.filter((obj: any) =>
-    obj[searchProperty]?.toLowerCase().startsWith(query.toLowerCase())
-  );
+  const filtered = designs?.filter((obj: any) => {
+   return obj[searchProperty]
+      ?.toString()
+      .toLowerCase()
+      .startsWith(query.toLowerCase());
+  });
 
   return (
     <Stack
@@ -141,9 +144,9 @@ const Main: React.FC<{ designs: any }> = ({ designs }) => {
             },
           }}>
           <Tabs value={searchProperty} onChange={handleChange} centered>
-            <Tab value="location" label="Location" />
-            <Tab value="property_name" label="Property Name" />
             <Tab value="county" label="County" />
+            <Tab value="no_of_bedrooms" label="No. of bedrooms" />
+            <Tab value="property_type" label="Category" />
           </Tabs>
         </Box>
         <Paper

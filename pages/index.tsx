@@ -289,14 +289,14 @@ export default function Index() {
             component="form"
             onSubmit={handleSubmit(onSubmit)}
             className={styles.contactform}>
-            <input
+            <TextField
               type="text"
-              placeholder="Full Name"
+              label="Full Name"
               {...register("name")}
-              className={styles.contactinputs}></input>
-            <Typography component="span" sx={{ color: "red" }}>
-              {errors.name?.message}
-            </Typography>
+            //  error={errors.name?}
+              helperText={errors.name?.message}
+              className={styles.contactinputs} />
+          
             <input
               type="email"
               placeholder="Email"
