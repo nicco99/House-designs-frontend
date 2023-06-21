@@ -61,7 +61,7 @@ const Main: React.FC<{ designs: any }> = ({ designs }) => {
   //   (obj: any) => obj[searchProperty].toLowerCase() === query.toLowerCase()
   // );
   const filtered = designs?.filter((obj: any) => {
-   return obj[searchProperty]
+    return obj[searchProperty]
       ?.toString()
       .toLowerCase()
       .startsWith(query.toLowerCase());
@@ -107,7 +107,7 @@ const Main: React.FC<{ designs: any }> = ({ designs }) => {
           onClick={handleClickOpen}
           variant="outlined"
           sx={{ color: "primary.dark", marginBottom: "20px" }}>
-          Filter Designs
+          Search Designs
           <TuneIcon />
         </Button>
       </Box>
