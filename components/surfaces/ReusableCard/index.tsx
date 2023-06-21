@@ -6,7 +6,7 @@ import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
-
+import Carousel from "react-material-ui-carousel";
 import BathtubIcon from "@mui/icons-material/Bathtub";
 import HotelIcon from "@mui/icons-material/Hotel";
 
@@ -18,6 +18,10 @@ const ReusableCard: React.FC<{
   no_of_bathrooms: number;
   no_of_bedrooms: number;
   image1: any;
+  image2: any;
+  image3: any;
+  image4: any;
+  image5: any;
   location: string;
   county: string;
   status: string;
@@ -30,14 +34,24 @@ const ReusableCard: React.FC<{
   no_of_bathrooms,
   no_of_bedrooms,
   image1,
+  image2,
+  image3,
+  image4,
+  image5,
   design_id,
   county,
   status,
-  property_size
+  property_size,
 }) => {
+  const images = [image1, image2, image3, image4, image5];
   return (
     <Card sx={{ maxWidth: "100%" }}>
-      <CardMedia sx={{ height: 250 }} image={image1} title={property_name} />
+      <Carousel>
+        {images.map((image, index) => (
+          <CardMedia key={index} sx={{ height: 250 }} image={image} />
+        ))}
+      </Carousel>
+
       <CardContent sx={{ gap: "20px" }}>
         <Typography gutterBottom variant="h5" component="div">
           {property_type}
@@ -92,7 +106,9 @@ const ReusableCard: React.FC<{
           </Typography>
         </Box>
 
-        <Typography gutterBottom variant="subtitle1">{property_name}</Typography>
+        <Typography gutterBottom variant="subtitle1">
+          {property_name}
+        </Typography>
         <Typography variant="body1" gap={1} sx={{ display: "flex" }}>
           <LocationOnIcon
             sx={{

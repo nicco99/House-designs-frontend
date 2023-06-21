@@ -121,7 +121,7 @@ export default function Index() {
             variant="h1">
             <TypeAnimation
               sequence={[
-                "OUR QUALITY DESIGNS", // Types 'One'
+                "Welcome to SMART | DESIGNS", // Types 'One'
                 1000, // Waits 1s
                 "We Design Appartments..",
                 1000, // Waits 2s
