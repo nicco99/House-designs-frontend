@@ -2,7 +2,7 @@ import React from "react";
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import Divider from "@mui/material/Divider";
-import FilterListIcon from '@mui/icons-material/FilterList';
+import FilterListIcon from "@mui/icons-material/FilterList";
 import Autocomplete from "@mui/material/Autocomplete";
 import SearchIcon from "@mui/icons-material/Search";
 import DirectionsIcon from "@mui/icons-material/Directions";
@@ -60,9 +60,12 @@ const Main: React.FC<{ designs: any }> = ({ designs }) => {
   // const filtered = designs?.filter(
   //   (obj: any) => obj[searchProperty].toLowerCase() === query.toLowerCase()
   // );
-  const filtered = designs?.filter((obj: any) =>
-    obj[searchProperty]?.toLowerCase().startsWith(query.toLowerCase())
-  );
+  const filtered = designs?.filter((obj: any) => {
+    return obj[searchProperty]
+      ?.toString()
+      .toLowerCase()
+      .startsWith(query.toLowerCase());
+  });
 
   return (
     <Stack
@@ -104,7 +107,7 @@ const Main: React.FC<{ designs: any }> = ({ designs }) => {
           onClick={handleClickOpen}
           variant="outlined"
           sx={{ color: "primary.dark", marginBottom: "20px" }}>
-          Filter Designs
+          Search Designs
           <TuneIcon />
         </Button>
       </Box>
@@ -141,9 +144,9 @@ const Main: React.FC<{ designs: any }> = ({ designs }) => {
             },
           }}>
           <Tabs value={searchProperty} onChange={handleChange} centered>
-            <Tab value="location" label="Location" />
-            <Tab value="property_name" label="Property Name" />
             <Tab value="county" label="County" />
+            <Tab value="no_of_bedrooms" label="No. of bedrooms" />
+            <Tab value="property_type" label="Category" />
           </Tabs>
         </Box>
         <Paper
@@ -165,7 +168,7 @@ const Main: React.FC<{ designs: any }> = ({ designs }) => {
           <Stack direction="row" sx={{ flexGrow: 1 }}>
             {" "}
             <IconButton sx={{ p: "10px" }} aria-label="menu">
-              <FilterListIcon sx={{color: "primary.dark"}} />
+              <FilterListIcon sx={{ color: "primary.dark" }} />
             </IconButton>
             <InputBase
               onChange={(e: any) => setQuery(e.target.value)}

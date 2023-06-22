@@ -1,12 +1,12 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import { Typography, Stack, Button, Paper, Divider } from "@mui/material";
-
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
-
+import Carousel from "react-material-ui-carousel";
 import BathtubIcon from "@mui/icons-material/Bathtub";
 import HotelIcon from "@mui/icons-material/Hotel";
 
@@ -18,7 +18,14 @@ const ReusableCard: React.FC<{
   no_of_bathrooms: number;
   no_of_bedrooms: number;
   image1: any;
+  image2: any;
+  image3: any;
+  image4: any;
+  image5: any;
   location: string;
+  county: string;
+  status: string;
+  property_size: string;
 }> = ({
   total_price,
   location,
@@ -27,11 +34,24 @@ const ReusableCard: React.FC<{
   no_of_bathrooms,
   no_of_bedrooms,
   image1,
+  image2,
+  image3,
+  image4,
+  image5,
   design_id,
+  county,
+  status,
+  property_size,
 }) => {
+  const images = [image1, image2, image3, image4, image5];
   return (
     <Card sx={{ maxWidth: "100%" }}>
-      <CardMedia sx={{ height: 250 }} image={image1} title={property_name} />
+      <Carousel>
+        {images.map((image, index) => (
+          <CardMedia key={index} sx={{ height: 250 }} image={image} />
+        ))}
+      </Carousel>
+
       <CardContent sx={{ gap: "20px" }}>
         <Typography gutterBottom variant="h5" component="div">
           {property_type}
@@ -86,13 +106,25 @@ const ReusableCard: React.FC<{
           </Typography>
         </Box>
 
-        <Typography variant="subtitle1">{property_name}</Typography>
-        <Typography variant="body1">
-          Location<Typography variant="subtitle2">{location}</Typography>
+        <Typography gutterBottom variant="subtitle1">
+          {property_name}
+        </Typography>
+        <Typography variant="body1" gap={1} sx={{ display: "flex" }}>
+          <LocationOnIcon
+            sx={{
+              fontSize: "20px",
+              color: "primary.main",
+              lineHeight: "22px",
+            }}
+          />
+
+          <Typography variant="subtitle2">
+            {location} , {county}
+          </Typography>
         </Typography>
       </CardContent>
       <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Button size="small">Save</Button>
+        <Typography variant="h6">{property_size}</Typography>
         <Button href={`designs/${design_id}`} variant="contained" size="small">
           Browse Plan
         </Button>
