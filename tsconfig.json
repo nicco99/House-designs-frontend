@@ -18,6 +18,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "styles/theme.js", "pages/search/index.js", "pages/about/index.js", "pages/index.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "styles/theme.js", "pages/search/index.js", "pages/about/index.js", "pages/index.tsx", "modules/Designs/SInglePage/Index.js", "pages/singlepage/Index.js", "pages/designs/[id].tsx", "pages/designs/[id].tsx"],
   "exclude": ["node_modules"]
 }
