@@ -297,7 +297,7 @@ const Index: React.FC<{ designs: any }> = ({ designs }) => {
         <h3 className={styles.testimonialheader}>TESTIMONIALS</h3>
         <hr className={styles.hr}></hr>
         <div className={styles.uuxdd}>
-          <div classNafunctionme={styles.testimony}>
+          <div className={styles.testimony}>
             <p className={styles.testimonialcontent}>
               I am thoroughly impressed with the exceptional quality of work
               delivered by your construction business. From start to finish, the
