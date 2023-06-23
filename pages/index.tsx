@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import Typography from "@mui/material/Typography";
 import illustration from "../public/illustration2.png";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import Image from "next/image";
+import Carousel from "react-material-ui-carousel";
 import Box from "@mui/material/Box";
 import axios from "axios";
 import Snackbar from "@mui/material/Snackbar";
@@ -41,7 +43,16 @@ type Contact = {
   subject: string;
   message: string;
 };
-export default function Index() {
+
+export const getStaticProps = async () => {
+  const res = await fetch("https://smart-designs-backend.onrender.com/designs");
+  const data = await res.json();
+  return {
+    props: { designs: data.data },
+  };
+};
+
+const Index: React.FC<{ designs: any }> = ({ designs }) => {
   const [open, setOpen] = useState<boolean>(false);
 
   const {
@@ -92,83 +103,105 @@ export default function Index() {
       <Stack
         sx={{
           width: "100%",
-          backgroundColor: "#ffffff",
-          // backgroundImage: `url(${landing.src})`,
-          // backgroundRepeat: "no-repeat",
-          // backgroundSize: "cover",
+          backgroundColor: "rgba(225, 235, 237, 0.5)",
           marginTop: "30px",
           display: "grid",
-          gridTemplateColumns: "1fr 1fr",
+          padding: "30px",
+          gridTemplateColumns: "1fr",
           "@media (max-width: 600px)": {
             display: "grid",
             gridTemplateColumns: "1fr",
+            padding: "5px",
           },
           height: "100vh",
         }}>
-        <Stack
-          direction="column"
+        <Carousel
           sx={{
-            // zIndex: "2",
-            height: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: 5,
+            height: "80%",
+            width: "100%",
+            marginTop: "auto",
+            marginBottom: "auto",
+            // "@media (max-width: 600px)": { display: "none" },
           }}>
-          <Typography
-            sx={{ fontWeight: "800" }}
-            color="primary.dark"
-            variant="h1">
-            <TypeAnimation
-              sequence={[
-                "Welcome to SMART | DESIGNS", // Types 'One'
-                1000, // Waits 1s
-                "We Design Appartments..",
-                1000, // Waits 2s
-                "We Design Bungalows..",
-                1000,
-                "We Design Massionates..",
-                1000,
-                //'Two Three', // Types 'Three' without deleting 'Two'
-              ]}
-              wrapper="span"
-              cursor={true}
-              repeat={Infinity}
-            />
-          </Typography>
-          <Typography
-            sx={{
-              width: "70%",
-              lineHeight: "30px",
-              fontWeight: "800",
-              letterSpacing: "2px",
-            }}
-            color="primary.dark"
-            variant="subtitle1">
-            At our core, we deliver good designs by combining creativity,
-            research, collaboration, and attention to detail, resulting in
-            visually appealing and functional solutions that exceed
-            expectations.
-          </Typography>
-          <Button href="/designs" size="large" variant="contained">
-            Browse Designs
-          </Button>
-        </Stack>
-        <Stack
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            padding: "20px",
-          }}>
-          <Image
-            height={400}
-            width={500}
-            style={{ height: "60%", width: "70%" }}
-            alt="illustration"
-            src={illustration}
-          />
-        </Stack>
+          {designs?.map((design: any) => (
+            <Stack
+              key={design.design_id}
+              sx={{
+                height: "100vh",
+                borderRadius: "10px",
+                width: "100%",
+                backgroundImage: `url(${design.image1})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}>
+              <Stack
+                sx={{
+                  padding: "20px",
+                  backgroundColor: "hsla(95, 25%, 42%, 0.5)",
+                  position: "absolute",
+                  left: 20,
+                  top: 30,
+                }}>
+                <Typography
+                  sx={{ color: "secondary.light" }}
+                  component="span"
+                  variant="subtitle1">
+                  {design.property_name}, {design.property_type}
+                </Typography>
+              </Stack>
+              <Stack
+                sx={{
+                  padding: "20px",
+                  backgroundColor: "primary.dark",
+                  position: "absolute",
+                  left: "16%",
+                  top: "12%",
+                }}>
+                <Typography
+                  sx={{ color: "secondary.light" }}
+                  component="span"
+                  variant="subtitle1">
+                  KSH {design.total_price}
+                </Typography>
+              </Stack>
+
+              <Stack
+                sx={{
+                  padding: "20px",
+                  position: "absolute",
+                  left: "10%",
+                  top: "60%",
+                }}>
+                <Button
+                  href={`/designs/${design.design_id}`}
+                  sx={{ color: "secondary.light" }}
+                  variant="contained">
+                  Browse Plan
+                </Button>
+              </Stack>
+              <Stack
+                direction="row"
+                sx={{
+                  padding: "20px",
+                  backgroundColor: "#05014a",
+                  position: "absolute",
+                  right: "10%",
+                  top: "50%",
+                }}>
+                <LocationOnIcon
+                  sx={{ fontSize: "25px", color: "secondary.light" }}
+                />
+                <Typography
+                  sx={{ color: "secondary.light" }}
+                  component="span"
+                  variant="subtitle1">
+                  {design.location}, {design.county}
+                </Typography>
+              </Stack>
+            </Stack>
+          ))}
+        </Carousel>
       </Stack>
       <div className={styles.welcomecontainer}>
         <div className={styles.welcomeholder}>
@@ -186,9 +219,9 @@ export default function Index() {
           </p>
         </div>
         <div className={styles.welcomephotocontainer}>
-          {/* <img
+          <img
             className={styles.welcomephoto}
-            src="https://i.pinimg.com/564x/25/30/20/25302048256deae4716eb26c5d50aed8.jpg"></img> */}
+            src="https://i.pinimg.com/564x/25/30/20/25302048256deae4716eb26c5d50aed8.jpg"></img>
         </div>
       </div>
       <div className={styles.maincontainer}>
@@ -264,7 +297,7 @@ export default function Index() {
         <h3 className={styles.testimonialheader}>TESTIMONIALS</h3>
         <hr className={styles.hr}></hr>
         <div className={styles.uuxdd}>
-          <div className={styles.testimony}>
+          <div classNafunctionme={styles.testimony}>
             <p className={styles.testimonialcontent}>
               I am thoroughly impressed with the exceptional quality of work
               delivered by your construction business. From start to finish, the
@@ -366,4 +399,6 @@ export default function Index() {
       <Footer />
     </Stack>
   );
-}
+};
+
+export default Index;
