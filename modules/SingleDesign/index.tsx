@@ -1,5 +1,8 @@
 import Header from "@/components/surfaces/Header";
 import HotelIcon from "@mui/icons-material/Hotel";
+import Snackbar from "@mui/material/Snackbar";
+
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 import Footer from "@/components/surfaces/Footer";
 import SquareFootIcon from "@mui/icons-material/SquareFoot";
 import { Stack, TextField, Typography } from "@mui/material";
@@ -19,6 +22,9 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 import { TransitionProps } from "@mui/material/transitions";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -29,8 +35,22 @@ const Transition = React.forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
+const contactSchema = yup.object({
+  name: yup.string().required("Full names are required"),
+  email: yup.string().email().trim().required("Email is required"),
+  subject: yup.string().trim().required("Subject is required"),
+  message: yup.string().required("Message is required"),
+});
+type Contact = {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+};
+
 const SingleDesign: React.FC<{ design: any }> = ({ design }) => {
   const [open, setOpen] = React.useState(false);
+  const [open1, setOpen1] = React.useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -38,6 +58,40 @@ const SingleDesign: React.FC<{ design: any }> = ({ design }) => {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<Contact>({
+    resolver: yupResolver(contactSchema),
+  });
+
+  const onSubmit: any = (data: any) => {
+    fetch("https://smart-designs-backend.onrender.com/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        setOpen1(true);
+        reset();
+      });
+  };
+  const handleClose1 = (
+    event: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen1(false);
   };
 
   return (
@@ -96,9 +150,9 @@ const SingleDesign: React.FC<{ design: any }> = ({ design }) => {
           <Stack>
             <Carousel
               sx={{
-                height: "80%",
+                height: "100%",
                 width: "90%",
-                marginTop: "auto",
+                marginTop: "10px",
                 marginBottom: "auto",
                 marginRight: "auto",
                 marginLeft: "auto",
@@ -179,8 +233,26 @@ const SingleDesign: React.FC<{ design: any }> = ({ design }) => {
                 <Typography>{design.property_size}</Typography>
               </Stack>
             </Stack>
+            <Stack
+              sx={{ width: "100%", justifyContent: "center", padding: "20px" }}
+              direction="row"
+              gap={3}>
+              <Typography variant="subtitle2" align="center">
+                Class of finishes:
+              </Typography>
+              {/* <Typography align="center" variant="h5">
+                {design.class_of_finishes}
+              </Typography> */}
+            </Stack>
           </Stack>
-          <Stack sx={{ justifyContent: "center" }}>
+          <Stack sx={{ justifyContent: "space-around" }}>
+            <Typography variant="h4" align="center">
+              <LocationOnIcon sx={{ fontSize: "50px" }} />
+              <Typography variant="subtitle1">
+                {" "}
+                {design.location}, {design.county}
+              </Typography>
+            </Typography>
             <Card
               sx={{ marginRight: "auto", marginLeft: "auto", width: "90%" }}>
               <CardHeader
@@ -227,7 +299,7 @@ const SingleDesign: React.FC<{ design: any }> = ({ design }) => {
                     size="large"
                     onClick={handleClickOpen}
                     endIcon={<ChatIcon />}>
-                    Message Admin
+                    Email Admin
                   </Button>
                 </Stack>
               </CardActions>
@@ -242,25 +314,46 @@ const SingleDesign: React.FC<{ design: any }> = ({ design }) => {
             <DialogTitle>
               {"Send a message to the admin conserning the design"}
             </DialogTitle>
-            <DialogContent>
-              <Stack sx={{ padding: "20px" }} gap={3}>
-                <TextField label="Enter valid email address *"></TextField>
-                <TextField
-                  value={`${design.property_name} ${design.property_type}`}
-                  label="Subject"></TextField>
-                <TextField multiline rows={4} label="message"></TextField>
-              </Stack>
-            </DialogContent>
-            <DialogActions>
-              <Button variant="contained" onClick={handleClose}>
-                send
-              </Button>
-              <Button onClick={handleClose}>back</Button>
-            </DialogActions>
+            <Stack component="form" onSubmit={handleSubmit(onSubmit)}>
+              <DialogContent>
+                <Stack sx={{ padding: "20px" }} gap={3}>
+                  <TextField
+                    {...register("name")}
+                    label="Enter Your full names *"></TextField>
+                  <TextField
+                    {...register("email")}
+                    label="Enter valid email address *"></TextField>
+                  <TextField
+                    {...register("subject")}
+                    value={`${design.property_name} ${design.property_type}`}
+                    label="Subject"></TextField>
+                  <TextField
+                    {...register("message")}
+                    multiline
+                    rows={4}
+                    label="message"></TextField>
+                </Stack>
+              </DialogContent>
+              <DialogActions>
+                <Button
+                  type="submit"
+                  size="medium"
+                  variant="contained"
+                  onClick={handleClose}>
+                  send
+                </Button>
+                <Button onClick={handleClose}>back</Button>
+              </DialogActions>
+            </Stack>
           </Dialog>
         </Stack>
       </Stack>
-
+      <Snackbar
+        open={open1}
+        autoHideDuration={2000}
+        onClose={handleClose1}
+        message="Message sent"
+      />
       <Footer />
     </Stack>
   );
