@@ -6,8 +6,7 @@ import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import Image from "next/image";
 import Carousel from "react-material-ui-carousel";
-import Box from "@mui/material/Box";
-import axios from "axios";
+
 import Snackbar from "@mui/material/Snackbar";
 import Link from "next/link";
 import contact from "../public/contacts.jpeg";
@@ -65,7 +64,7 @@ const Index: React.FC<{ designs: any }> = ({ designs }) => {
   });
 
   const onSubmit: any = (data: any) => {
-    console.log(data);
+
     fetch("https://smart-designs-backend.onrender.com/contact", {
       method: "POST",
       headers: {
@@ -76,7 +75,6 @@ const Index: React.FC<{ designs: any }> = ({ designs }) => {
       .then((r) => r.json())
       .then((data) => {
         setOpen(true);
-        console.log("message sent");
         reset();
       });
   };
