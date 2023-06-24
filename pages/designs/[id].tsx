@@ -1,3 +1,4 @@
+import SingleDesign from "@/modules/SingleDesign";
 import React from "react";
 
 export const getStaticPaths = async () => {
@@ -27,8 +28,7 @@ export const getStaticProps = async (context: any) => {
 };
 
 const DesignPage: React.FC<{ design: any }> = ({ design }) => {
-
-  return <div>{design.design_id}</div>;
+  return <SingleDesign design={design} />;
 };
 
 export default DesignPage;
