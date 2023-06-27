@@ -10,7 +10,7 @@ import { Typography } from "@mui/material";
 
 export const getStaticProps = async () => {
   const res = await fetch(
-    "https://smart-designs-backend.onrender.com/designs/4"
+    "https://smart-designs-backend.onrender.com/designs/2"
   );
   const data = await res.json();
   return {
@@ -149,9 +149,9 @@ function About({ design }) {
               {design.property_name +
                 " " +
                 design.property_type +
-                "..at" +
+                "..at " +
                 design.location +
-                " " +
+                ", " +
                 design.county}
             </Typography>
           </Stack>

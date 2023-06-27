@@ -64,7 +64,6 @@ const Index: React.FC<{ designs: any }> = ({ designs }) => {
   });
 
   const onSubmit: any = (data: any) => {
-
     fetch("https://smart-designs-backend.onrender.com/contact", {
       method: "POST",
       headers: {
@@ -102,9 +101,9 @@ const Index: React.FC<{ designs: any }> = ({ designs }) => {
         sx={{
           width: "100%",
           backgroundColor: "rgba(225, 235, 237, 0.5)",
-          marginTop: "30px",
+          marginTop: "15px",
           display: "grid",
-          padding: "30px",
+
           gridTemplateColumns: "1fr",
           "@media (max-width: 600px)": {
             display: "grid",
