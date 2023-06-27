@@ -4,17 +4,24 @@ import Footer from "../../components/surfaces/Footer";
 import Header from "../../components/surfaces/Header";
 import pdisplay from "../../public/pdisplay.jpeg";
 import Image from "next/image";
+import Carousel from "react-material-ui-carousel";
 import Stack from "@mui/material/Stack";
 import { Typography } from "@mui/material";
-function About() {
+
+export const getStaticProps = async () => {
+  const res = await fetch(
+    "https://smart-designs-backend.onrender.com/designs/4"
+  );
+  const data = await res.json();
+  return {
+    props: { design: data.data },
+  };
+};
+
+function About({ design }) {
   return (
     <div className={styles.about}>
       <Header />
-      {/* <div className={styles.aboutbody}> */}
-      {/* <h3 className={styles.abouttitle}> */}
-      {/* ABOUT US */}
-      {/* </h3> */}
-      {/* </div> */}
       <Stack
         sx={{
           minHeight: "100vh",
@@ -30,6 +37,7 @@ function About() {
         }}
         gap={2}>
         <Stack
+          gap={3}
           sx={{
             marginTop: "auto",
             marginBottom: "auto",
@@ -37,23 +45,55 @@ function About() {
             marginLeft: "30px",
           }}>
           <Typography
-            sx={{ marginLeft: "auto", marginRight: "auto" }}
-            variant="h3">
+            sx={{
+              marginLeft: "auto",
+              fontWeight: 900,
+              marginRight: "auto",
+              fontSize: "30px",
+              color: "primary.dark",
+            }}>
             ABOUT US
           </Typography>
           <Typography
             sx={{
               marginLeft: "auto",
               marginRight: "auto",
-              lineHeight: "40px",
+              fontSize: "20px",
+              lineHeight: "30px",
             }}>
-            Welcome to SMART DESIGNS, your ultimate destination for innovative
-            house plans and comprehensive construction management services. With
-            our team of experienced architects, designers, and construction
-            experts, we are committed to transforming your dream home into a
-            reality. At SMART DESIGNS, we understand that every client is
-            unique, and our mission is to provide personalized solutions that
-            exceed your expectations.
+            Welcome to{" "}
+            <Typography
+              component="span"
+              sx={{ fontWeight: 600, fontSize: "21px" }}>
+              SMART | DESIGNS
+            </Typography>
+            , your ultimate destination for innovative house plans and
+            comprehensive construction management services. With our team of
+            experienced{" "}
+            <Typography
+              component="span"
+              sx={{ fontWeight: 700, fontSize: "22px" }}>
+              architects, designers,
+            </Typography>{" "}
+            and{" "}
+            <Typography
+              component="span"
+              sx={{ fontWeight: 700, fontSize: "22px" }}>
+              {" "}
+              construction experts
+            </Typography>
+            , we are committed to transforming your dream home into a reality.
+          </Typography>
+          <Typography
+            sx={{
+              marginLeft: "auto",
+              marginRight: "auto",
+              fontSize: "20px",
+              lineHeight: "30px",
+            }}>
+            At SMART DESIGNS, we understand that every client is unique, and our
+            mission is to provide personalized solutions that exceed your
+            expectations.
           </Typography>
         </Stack>
         <Stack>
@@ -69,6 +109,88 @@ function About() {
               marginBottom: "auto",
             }}
           />
+        </Stack>
+      </Stack>
+      <Stack>
+        <Typography
+          sx={{ marginTop: "10px", color: "primary.dark" }}
+          align="center"
+          variant="subtitle1">
+          Sample Complete Project
+        </Typography>
+        <Stack
+          sx={{
+            marginTop: "20px",
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            "@media (max-width: 600px)": {
+              display: "grid",
+              gridTemplateColumns: "1fr",
+            },
+          }}>
+          <Stack>
+            <Image
+              src={design.image1}
+              alt="image"
+              height={300}
+              width={400}
+              style={{
+                height: "80%",
+                width: "90%",
+                borderRadius: "10px",
+                border: "none",
+                marginTop: "auto",
+                marginBottom: "auto",
+                marginRight: "auto",
+                marginLeft: "auto",
+              }}
+            />
+            <Typography align="center" fontStyle="italic">
+              {design.property_name +
+                " " +
+                design.property_type +
+                "..at" +
+                design.location +
+                " " +
+                design.county}
+            </Typography>
+          </Stack>
+
+          <Stack
+            sx={{ width: "80%", marginRight: "auto", marginLeft: "auto" }}
+            gap={3}>
+            <Typography variant="subtitle1">Modern Oasis Residence</Typography>
+            <Typography variant="body2">
+              The Modern Oasis Residence is a stunning architectural masterpiece
+              designed and constructed by{" "}
+              <Typography
+                component="span"
+                sx={{ fontWeight: 600, fontSize: "20px" }}>
+                SMART | DESIGNS
+              </Typography>{" "}
+              Nestled in a picturesque location, this project exemplifies the
+              perfect blend of contemporary design and natural surroundings. The
+              residence spans 4,500 square feet and offers a luxurious living
+              experience for the homeowners.
+            </Typography>
+            <Typography variant="h6"> Exterior Design</Typography>
+            <Typography variant="body2">
+              The exterior of the Modern Oasis Residence showcases sleek lines
+              and a minimalist aesthetic. The facade features a combination of
+              glass, concrete, and wood, creating a harmonious balance between
+              modernity and warmth. Large floor-to-ceiling windows provide
+              breathtaking views of the surrounding landscape and allow an
+              abundance of natural light to flood the interior spaces.
+            </Typography>
+            <Typography variant="h6">Interior Design</Typography>
+            <Typography variant="body2">
+              Upon entering the residence, one is greeted by a spacious and open
+              floor plan that seamlessly connects the living, dining, and
+              kitchen areas. The interior design follows a minimalist approach,
+              with clean lines, neutral color palettes, and carefully curated
+              furnishings that enhance the sense of serenity and sophistication.
+            </Typography>
+          </Stack>
         </Stack>
       </Stack>
       <div className={styles.aboutdescriptionholder}>
