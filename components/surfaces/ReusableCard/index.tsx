@@ -26,6 +26,7 @@ const ReusableCard: React.FC<{
   county: string;
   status: string;
   property_size: string;
+  plinth_area: string;
 }> = ({
   total_price,
   location,
@@ -42,6 +43,7 @@ const ReusableCard: React.FC<{
   county,
   status,
   property_size,
+  plinth_area,
 }) => {
   const images = [image1, image2, image3, image4, image5];
   return (
@@ -52,7 +54,7 @@ const ReusableCard: React.FC<{
         ))}
       </Carousel>
 
-      <CardContent sx={{ gap: "20px" }}>
+      <CardContent sx={{ gap: "30px" }}>
         <Typography gutterBottom variant="h5" component="div">
           {property_type}
         </Typography>
@@ -122,6 +124,10 @@ const ReusableCard: React.FC<{
             {location} , {county}
           </Typography>
         </Typography>
+        <Stack direction="row" gap={2} sx={{ marginTop: "10px" }}>
+          <Typography sx={{ fontWeight: 600 }}> Plinth area: </Typography>
+          <Typography>{plinth_area}</Typography>{" "}
+        </Stack>
       </CardContent>
       <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
         <Typography variant="h6">{property_size}</Typography>
