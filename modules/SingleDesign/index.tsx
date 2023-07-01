@@ -238,7 +238,7 @@ const SingleDesign: React.FC<{ design: any }> = ({ design }) => {
               direction="row"
               gap={3}>
               <Typography variant="subtitle2" align="center">
-                Class of finishes:
+                Plinth area: {design.plinth_area}
               </Typography>
               {/* <Typography align="center" variant="h5">
                 {design.class_of_finishes}
@@ -246,13 +246,13 @@ const SingleDesign: React.FC<{ design: any }> = ({ design }) => {
             </Stack>
           </Stack>
           <Stack sx={{ justifyContent: "space-around" }}>
-            <Typography variant="h4" align="center">
+            <Stack direction="column">
               <LocationOnIcon sx={{ fontSize: "50px" }} />
               <Typography variant="subtitle1">
                 {" "}
                 {design.location}, {design.county}
               </Typography>
-            </Typography>
+            </Stack>
             <Card
               sx={{ marginRight: "auto", marginLeft: "auto", width: "90%" }}>
               <CardHeader
