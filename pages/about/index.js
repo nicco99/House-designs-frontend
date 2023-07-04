@@ -316,7 +316,7 @@ function About({ design }) {
             functional and aesthetically pleasing environments that enhance
             productivity, customer experience, and brand identity. Through
             effective project management, we deliver commercial spaces that
-            align with our clients' objectives while adhering to timelines and
+            align with our clients objectives while adhering to timelines and
             budgets.
           </Typography>
           <Typography sx={{ color: "primary.main" }} variant="subtitle2">
