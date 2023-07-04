@@ -410,8 +410,9 @@ function About({ design }) {
               </Typography>
             </Stack>
             <Stack gap={2}>
+            {/* &apos;`, `&lsquo;`, `&#39;`, `&rsquo; */}
               <Typography color="secondary.light" variant="subtitle2">
-                Architect's Role in Drawing the Building:
+                Architect Role in Drawing the Building:
               </Typography>
               <Typography color="primary.light" variant="body1">
                 Our architects play a crucial role in the drawing and
@@ -420,7 +421,7 @@ function About({ design }) {
                 as the foundation for the construction process. By leveraging
                 their architectural knowledge and design sensibilities, our
                 architects create comprehensive drawings that not only depict
-                the building's form, structure, and spatial arrangement but also
+                the building form, structure, and spatial arrangement but also
                 incorporate essential construction details, materials, and
                 building systems.
               </Typography>
@@ -470,7 +471,7 @@ function About({ design }) {
                 any design-related issues that arise, and maintaining the
                 highest standards of craftsmanship. This hands-on approach
                 guarantees that the final built product reflects the original
-                design intent and meets our clients' expectations.
+                design intent and meets our clients expectations.
               </Typography>
             </Stack>
           </Stack>
